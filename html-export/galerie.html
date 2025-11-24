@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Souvenirs - Galerie</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, hsl(270, 50%, 80%), hsl(25, 95%, 98%), hsl(340, 100%, 95%));
+            color: hsl(340, 50%, 20%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: hsl(340, 50%, 20%);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .camera-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: rgba(103, 33, 56, 0.7);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(232, 28, 79, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-color: rgba(232, 28, 79, 0.4);
+        }
+
+        .gallery-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(232, 28, 79, 0.2), rgba(179, 98, 255, 0.2), rgba(255, 207, 159, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image::before {
+            content: '📷';
+            font-size: 4rem;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-card:hover .gallery-image::before {
+            transform: scale(1.1);
+        }
+
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-card:hover .gallery-image::after {
+            opacity: 1;
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-date {
+            color: hsl(340, 82%, 52%);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description {
+            color: rgba(103, 33, 56, 0.7);
+            font-size: 0.875rem;
+        }
+
+        .quote-section {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-section p {
+            font-size: 1.125rem;
+            color: rgba(103, 33, 56, 0.7);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Notre Amour</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="notre-histoire.html">Notre Histoire</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="pourquoi.html">Pourquoi Je T'aime</a></li>
+                <li><a href="ensemble.html">Notre Avenir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="camera-icon">📷</div>
+            <h1>Nos Souvenirs</h1>
+            <p>Chaque photo raconte une partie de notre histoire</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Décembre 2023</p>
+                    <h3 class="gallery-title">Premier Rendez-vous</h3>
+                    <p class="gallery-description">Ce sourire qui m'a fait fondre</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Février 2024</p>
+                    <h3 class="gallery-title">Week-end à la montagne</h3>
+                    <p class="gallery-description">Notre première escapade ensemble</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Avril 2024</p>
+                    <h3 class="gallery-title">Soirée sous les étoiles</h3>
+                    <p class="gallery-description">Une nuit magique à contempler le ciel</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Juin 2024</p>
+                    <h3 class="gallery-title">Pique-nique au parc</h3>
+                    <p class="gallery-description">Rires et moments de complicité</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Août 2024</p>
+                    <h3 class="gallery-title">Concert</h3>
+                    <p class="gallery-description">Dancing toute la nuit ensemble</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image"></div>
+                <div class="gallery-info">
+                    <p class="gallery-date">Septembre 2024</p>
+                    <h3 class="gallery-title">Anniversaire surprise</h3>
+                    <p class="gallery-description">Le jour où tu m'as surpris</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p>"Chaque photo est un trésor, chaque moment avec toi est précieux. Merci pour tous ces souvenirs inoubliables. ❤️"</p>
+        </div>
+    </div>
+</body>
+</html>

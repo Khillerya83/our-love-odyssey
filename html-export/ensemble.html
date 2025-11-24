@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Avenir Ensemble</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, rgba(190, 169, 216, 0.3), hsl(25, 95%, 98%), rgba(237, 125, 100, 0.2));
+            color: hsl(340, 50%, 20%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: hsl(340, 50%, 20%);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .float-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: rgba(103, 33, 56, 0.7);
+        }
+
+        .dreams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .dream-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(232, 28, 79, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .dream-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(232, 28, 79, 0.4);
+        }
+
+        .dream-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: rgba(232, 28, 79, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dream-card:hover .dream-icon {
+            transform: scale(1.1);
+        }
+
+        .dream-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .dream-description {
+            color: rgba(103, 33, 56, 0.7);
+            line-height: 1.6;
+        }
+
+        .promise-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(232, 28, 79, 0.3);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 0 60px hsl(340, 82%, 52%, 0.4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise-section::before,
+        .promise-section::after {
+            content: '';
+            position: absolute;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .promise-section::before {
+            top: 0;
+            right: 0;
+            background: rgba(232, 28, 79, 0.1);
+        }
+
+        .promise-section::after {
+            bottom: 0;
+            left: 0;
+            background: rgba(179, 98, 255, 0.1);
+        }
+
+        .promise-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px hsl(340, 82%, 52%, 0.5));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 40px hsl(340, 82%, 52%, 0.8));
+            }
+        }
+
+        .promise-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 10;
+        }
+
+        .promise-content {
+            color: rgba(103, 33, 56, 0.8);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 10;
+        }
+
+        .promise-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .promise-quote {
+            font-style: italic;
+        }
+
+        .promise-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .promise-line {
+            width: 4rem;
+            height: 2px;
+            background: linear-gradient(to right, transparent, hsl(340, 82%, 52%));
+        }
+
+        .promise-line.reverse {
+            background: linear-gradient(to left, transparent, hsl(340, 82%, 52%));
+        }
+
+        .promise-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: hsl(340, 82%, 52%);
+            margin-top: 1.5rem;
+        }
+
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            animation: rise-up 12s ease-in infinite;
+        }
+
+        @keyframes rise-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0);
+            }
+            10% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10vh) translateX(50px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dreams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promise-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Notre Amour</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="notre-histoire.html">Notre Histoire</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="pourquoi.html">Pourquoi Je T'aime</a></li>
+                <li><a href="ensemble.html">Notre Avenir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts">
+        <div class="floating-heart" style="left: 5%; animation-delay: 0s;">❤️</div>
+        <div class="floating-heart" style="left: 15%; animation-delay: 2s;">❤️</div>
+        <div class="floating-heart" style="left: 25%; animation-delay: 4s;">❤️</div>
+        <div class="floating-heart" style="left: 35%; animation-delay: 1s;">❤️</div>
+        <div class="floating-heart" style="left: 45%; animation-delay: 3s;">❤️</div>
+        <div class="floating-heart" style="left: 55%; animation-delay: 5s;">❤️</div>
+        <div class="floating-heart" style="left: 65%; animation-delay: 2s;">❤️</div>
+        <div class="floating-heart" style="left: 75%; animation-delay: 4s;">❤️</div>
+        <div class="floating-heart" style="left: 85%; animation-delay: 1s;">❤️</div>
+        <div class="floating-heart" style="left: 95%; animation-delay: 3s;">❤️</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="float-icon">❤️</div>
+            <h1>Notre Avenir Ensemble</h1>
+            <p>Tous les rêves que nous allons réaliser côte à côte</p>
+        </div>
+
+        <div class="dreams-grid">
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(340, 82%, 52%);">✈️</div>
+                <h3 class="dream-title">Voyager ensemble</h3>
+                <p class="dream-description">Découvrir le monde main dans la main, créer des souvenirs dans chaque coin de la planète.</p>
+            </div>
+
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(280, 65%, 60%);">🏠</div>
+                <h3 class="dream-title">Notre chez-nous</h3>
+                <p class="dream-description">Créer un foyer rempli d'amour, de rires et de moments chaleureux.</p>
+            </div>
+
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(10, 85%, 70%);">❤️</div>
+                <h3 class="dream-title">Grandir ensemble</h3>
+                <p class="dream-description">Continuer à évoluer ensemble, en se soutenant dans tous nos projets.</p>
+            </div>
+
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(15, 80%, 70%);">📍</div>
+                <h3 class="dream-title">Nos aventures</h3>
+                <p class="dream-description">Vivre mille et une aventures, des plus simples aux plus extraordinaires.</p>
+            </div>
+
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(340, 82%, 52%);">🎵</div>
+                <h3 class="dream-title">Créer des souvenirs</h3>
+                <p class="dream-description">Partager des moments musicaux, danser sous les étoiles et chanter ensemble.</p>
+            </div>
+
+            <div class="dream-card">
+                <div class="dream-icon" style="color: hsl(280, 65%, 60%);">📷</div>
+                <h3 class="dream-title">Capturer chaque instant</h3>
+                <p class="dream-description">Immortaliser tous nos moments précieux à travers nos yeux et nos cœurs.</p>
+            </div>
+        </div>
+
+        <div class="promise-section">
+            <div class="promise-icon">❤️</div>
+            <h2>Notre Promesse</h2>
+            <div class="promise-content">
+                <p class="promise-quote">"Main dans la main, cœur contre cœur, nous écrirons ensemble les plus beaux chapitres de notre vie."</p>
+                <p>Chaque rêve que nous partageons nous rapproche un peu plus. Chaque projet que nous construisons ensemble renforce notre amour. L'avenir nous appartient, et je suis impatient de le vivre avec toi.</p>
+                <div class="promise-divider">
+                    <div class="promise-line"></div>
+                    <div style="font-size: 1.5rem;">❤️</div>
+                    <div class="promise-line reverse"></div>
+                </div>
+                <p class="promise-signature">Pour toujours et à jamais</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

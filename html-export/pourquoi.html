@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pourquoi Je T'aime</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, rgba(237, 125, 100, 0.2), hsl(25, 95%, 98%), rgba(226, 151, 109, 0.2));
+            color: hsl(340, 50%, 20%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: hsl(340, 50%, 20%);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .heart-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px hsl(340, 82%, 52%, 0.5));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 40px hsl(340, 82%, 52%, 0.8));
+            }
+        }
+
+        .header h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: rgba(103, 33, 56, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(232, 28, 79, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: scale(1.03);
+            border-color: rgba(232, 28, 79, 0.4);
+        }
+
+        .reason-header {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .reason-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(232, 28, 79, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .reason-content {
+            flex: 1;
+        }
+
+        .reason-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(340, 82%, 52%);
+            margin-bottom: 0.5rem;
+        }
+
+        .reason-text {
+            color: rgba(103, 33, 56, 0.7);
+            line-height: 1.6;
+        }
+
+        .love-letter {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(232, 28, 79, 0.3);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 0 60px hsl(340, 82%, 52%, 0.4);
+            text-align: center;
+        }
+
+        .letter-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .love-letter h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, hsl(340, 82%, 52%), hsl(15, 80%, 70%), hsl(30, 100%, 85%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .letter-content {
+            color: rgba(103, 33, 56, 0.8);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        .letter-content p {
+            margin-bottom: 1rem;
+        }
+
+        .letter-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: hsl(340, 82%, 52%);
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .love-letter {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Notre Amour</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="notre-histoire.html">Notre Histoire</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="pourquoi.html">Pourquoi Je T'aime</a></li>
+                <li><a href="ensemble.html">Notre Avenir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="heart-icon">❤️</div>
+            <h1>Pourquoi Je T'aime</h1>
+            <p>Il y a tant de raisons, mais voici quelques-unes des plus importantes</p>
+        </div>
+
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">❤️</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ton sourire</h3>
+                        <p class="reason-text">Ton sourire illumine mes journées et réchauffe mon cœur, même dans les moments les plus difficiles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">✨</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ta gentillesse</h3>
+                        <p class="reason-text">Ta bienveillance envers moi et les autres me montre chaque jour la beauté de ton âme.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">⭐</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ton humour</h3>
+                        <p class="reason-text">Tu sais me faire rire comme personne, et chaque moment avec toi est rempli de joie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">❤️</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ta force</h3>
+                        <p class="reason-text">Tu m'inspires par ta force et ta détermination face aux défis de la vie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">✨</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ta complicité</h3>
+                        <p class="reason-text">Nous partageons une connexion unique, et je me sens compris comme jamais auparavant.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">⭐</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ton amour</h3>
+                        <p class="reason-text">L'amour que tu me donnes me rend meilleur et me fait croire en nous chaque jour.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">❤️</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Ta présence</h3>
+                        <p class="reason-text">Simplement être à tes côtés me procure un sentiment de paix et de bonheur incomparable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-header">
+                    <div class="reason-icon">✨</div>
+                    <div class="reason-content">
+                        <h3 class="reason-title">Tes petites attentions</h3>
+                        <p class="reason-text">Chaque geste, chaque mot doux, montre à quel point tu tiens à moi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="love-letter">
+            <div class="letter-icon">❤️</div>
+            <h2>Une lettre d'amour</h2>
+            <div class="letter-content">
+                <p>Ma chérie,</p>
+                <p>Cette année passée à tes côtés a été la plus belle de ma vie. Chaque jour avec toi est une bénédiction, et je ne peux imaginer ma vie sans ton sourire, ton rire et ton amour.</p>
+                <p>Tu es ma meilleure amie, ma confidente, mon amour. Tu m'as appris ce que signifie vraiment aimer quelqu'un de tout son cœur. Avec toi, je me sens complet, heureux et prêt à affronter n'importe quoi.</p>
+                <p>Merci pour cette première année incroyable. J'ai hâte de vivre toutes les suivantes à tes côtés, de créer encore plus de souvenirs et de construire notre avenir ensemble.</p>
+                <p class="letter-signature">Je t'aime plus que les mots ne peuvent le dire. ❤️</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
